@@ -28,8 +28,8 @@ type Status = "online" | "busy" | "break" | "vacation";
 
 const STATUS_META: Record<Status, { label: string; dot: string; note: string }> = {
   online: { label: "Online", dot: "bg-emerald-500", note: "Visible and accepting new sessions." },
-  busy: { label: "Busy", dot: "bg-amber-500", note: "In session — new clients join the waitlist." },
-  break: { label: "On a break", dot: "bg-sky-500", note: "Hidden temporarily, auto-return when the timer ends." },
+  busy: { label: "Busy", dot: "bg-red-500", note: "In session — new clients join the waitlist." },
+  break: { label: "On a break", dot: "bg-orange-500", note: "Hidden temporarily, auto-return when the timer ends." },
   vacation: { label: "Vacation mode", dot: "bg-slate-400", note: "Profile hidden from search until you return." },
 };
 
