@@ -1,5 +1,46 @@
-import { useEffect, useState } from "react";
-import { Check, Loader2 } from "lucide-react";
+import { useEffect, useState, type ComponentType } from "react";
+import {
+  Check,
+  Loader2,
+  CloudRain,
+  Sun,
+  Anchor,
+  Search,
+  HeartCrack,
+  Sparkles,
+  Heart,
+  Briefcase,
+  Coins,
+  Users,
+  Compass,
+  Feather,
+  Layers,
+  Moon,
+  Hash,
+  CloudMoon,
+  HandHeart,
+} from "lucide-react";
+
+const optionIcons: Record<string, ComponentType<{ className?: string }>> = {
+  Anxious: CloudRain,
+  Hopeful: Sun,
+  Stuck: Anchor,
+  Curious: Search,
+  Heartbroken: HeartCrack,
+  "Ready for change": Sparkles,
+  "Love & Relationships": Heart,
+  Career: Briefcase,
+  Money: Coins,
+  Family: Users,
+  "Life path": Compass,
+  Grief: Feather,
+  Tarot: Layers,
+  Astrology: Moon,
+  Mediumship: Sparkles,
+  Numerology: Hash,
+  "Dream Analysis": CloudMoon,
+  "Spiritual Healing": HandHeart,
+};
 
 const STORAGE_KEY = "myp.quiz.completed";
 
