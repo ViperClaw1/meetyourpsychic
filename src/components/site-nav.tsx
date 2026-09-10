@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useAuth, roleHome, roleLabel } from "@/lib/auth";
+import { DiscoveryTrigger } from "@/components/filter-sidebar";
+
 
 export function SiteNav() {
   const { role, signOut } = useAuth();
@@ -28,8 +30,10 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <DiscoveryTrigger className="hidden items-center gap-2 rounded-md border border-border bg-card px-3.5 py-2 text-sm font-medium text-muted-foreground shadow-soft transition-colors hover:border-primary hover:text-foreground sm:inline-flex" />
-
+          {role ? (
+            <>
               <button
+
                 onClick={() => navigate({ to: roleHome[role] })}
                 className="rounded-md border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
               >
