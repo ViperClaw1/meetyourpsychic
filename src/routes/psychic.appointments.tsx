@@ -159,7 +159,7 @@ function Appointments() {
         open={!!declineFor}
         onClose={() => setDeclineFor(null)}
         title="Decline booking"
-        subtitle={declineFor ? `${declineFor.client} · ${declineFor.when}` : undefined}
+        subtitle={declineFor ? `${declineFor.client} · ${declineFor.when}` : ""}
         footer={
           <>
             <button
@@ -212,7 +212,7 @@ function Appointments() {
         open={!!reschedFor}
         onClose={() => setReschedFor(null)}
         title="Propose a new time"
-        subtitle={reschedFor ? `${reschedFor.client} · currently ${reschedFor.when}` : undefined}
+        subtitle={reschedFor ? `${reschedFor.client} · currently ${reschedFor.when}` : ""}
         footer={
           <>
             <button
