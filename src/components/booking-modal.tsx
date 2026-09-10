@@ -9,6 +9,14 @@ const monthLabel = "September 2026";
 const firstWeekdayOffset = 1; // month starts Tuesday
 const daysInMonth = 30;
 
+function detectTimeZone() {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch {
+    return "UTC";
+  }
+}
+
 export function BookingModal({
   advisor,
   open,
