@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Info } from "lucide-react";
+import { ChevronLeft, ChevronRight, Globe, Info } from "lucide-react";
 import { Modal } from "@/components/modal";
 import type { Advisor } from "@/data/advisors";
 
