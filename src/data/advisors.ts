@@ -96,5 +96,5 @@ export const advisors: Advisor[] = [
   },
 ];
 
-export const favoriteAdvisors = [advisors[0], advisors[2]];
-export const smartMatches = advisors;
+export const favoriteAdvisors: Advisor[] = advisors.filter((a) => ["a1", "a3"].includes(a.id));
+export const smartMatches: Advisor[] = advisors;

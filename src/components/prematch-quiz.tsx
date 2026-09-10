@@ -92,7 +92,7 @@ export function PreMatchQuiz() {
               title="How are you feeling right now?"
               subtitle="Pick everything that resonates — this shapes your matches."
               options={feelings}
-              selected={picked[0]}
+              selected={picked[0] ?? []}
               onToggle={(v) => toggle(0, v)}
             />
           )}
@@ -101,7 +101,7 @@ export function PreMatchQuiz() {
               title="What would you like guidance on?"
               subtitle="Choose one or more topics for your first reading."
               options={topics}
-              selected={picked[1]}
+              selected={picked[1] ?? []}
               onToggle={(v) => toggle(1, v)}
             />
           )}
@@ -110,7 +110,7 @@ export function PreMatchQuiz() {
               title="Which reading styles appeal to you?"
               subtitle="We'll prioritise advisors trained in these practices."
               options={skills}
-              selected={picked[2]}
+              selected={picked[2] ?? []}
               onToggle={(v) => toggle(2, v)}
             />
           )}
