@@ -58,6 +58,20 @@ export function IvrCallModal({
             className="h-20 w-20 rounded-lg border border-border object-cover"
           />
           <p className="mt-4 text-base font-bold text-foreground">{advisor.name}</p>
+          {!ended ? (
+            <div className="mt-3 flex h-8 items-end justify-center gap-[3px]">
+              {[0.55, 0.8, 1, 0.7, 1, 0.45, 0.9, 0.65, 1, 0.5, 0.85, 0.6].map((h, i) => (
+                <span
+                  key={i}
+                  className={`w-[3px] rounded-full ${lowBalance ? "bg-destructive" : "bg-primary"}`}
+                  style={{
+                    height: `${h * 100}%`,
+                    animation: `myp-wave ${0.9 + (i % 4) * 0.18}s ease-in-out ${i * 0.07}s infinite`,
+                  }}
+                />
+              ))}
+            </div>
+          ) : null}
           <p className="text-sm text-muted-foreground">
             {ended ? "Call ended" : "Voice session in progress"}
           </p>
