@@ -80,7 +80,7 @@ export function BookingModal({
       {confirmed ? (
         <div className="space-y-3">
           <SummaryRow label="Advisor" value={advisor.name} />
-          <SummaryRow label="When" value={`Sep ${day}, 2026 · ${slot}`} />
+          <SummaryRow label="When" value={`Sep ${day}, 2026 · ${slot} (${timeZone})`} />
           <SummaryRow label="Length" value={`${duration} minutes`} />
           <SummaryRow label="Deposit hold" value={`$${deposit}`} />
         </div>
