@@ -201,3 +201,8 @@
     display: none;
   }
 }
+
+@keyframes myp-wave {
+  0%, 100% { transform: scaleY(0.3); opacity: 0.55; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
