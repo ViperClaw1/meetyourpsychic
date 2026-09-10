@@ -7,16 +7,17 @@ function applyTheme(dark: boolean) {
   document.documentElement.classList.toggle("dark", dark);
 }
 
-export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
+export function ThemeToggle({ defaultDark = false }: { defaultDark?: boolean }) {
+  const [dark, setDark] = useState(defaultDark);
 
   useEffect(() => {
     const saved = localStorage.getItem(KEY);
     const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initial = saved ? saved === "dark" : prefers;
+    const initial = saved ? saved === "dark" : defaultDark || prefers;
     setDark(initial);
     applyTheme(initial);
-  }, []);
+    return () => applyTheme(false);
+  }, [defaultDark]);
 
   const toggle = useCallback(() => {
     setDark((d) => {
