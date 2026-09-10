@@ -31,7 +31,13 @@ const DiscoveryContext = createContext<DiscoveryValue | null>(null);
 export function DiscoveryProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>(defaultFilters);
+  useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener("myp:open-discovery", handler);
+    return () => window.removeEventListener("myp:open-discovery", handler);
+  }, []);
   const value = useMemo(() => ({ open, setOpen, filters, setFilters }), [open, filters]);
+
   return (
     <DiscoveryContext.Provider value={value}>
       {children}
