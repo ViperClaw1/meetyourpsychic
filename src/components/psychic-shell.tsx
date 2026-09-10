@@ -28,8 +28,8 @@ type Status = "online" | "busy" | "break" | "vacation";
 
 const STATUS_META: Record<Status, { label: string; dot: string; note: string }> = {
   online: { label: "Online", dot: "bg-emerald-500", note: "Visible and accepting new sessions." },
-  busy: { label: "Busy", dot: "bg-amber-500", note: "In session — new clients join the waitlist." },
-  break: { label: "On a break", dot: "bg-sky-500", note: "Hidden temporarily, auto-return when the timer ends." },
+  busy: { label: "Busy", dot: "bg-red-500", note: "In session — new clients join the waitlist." },
+  break: { label: "On a break", dot: "bg-orange-500", note: "Hidden temporarily, auto-return when the timer ends." },
   vacation: { label: "Vacation mode", dot: "bg-slate-400", note: "Profile hidden from search until you return." },
 };
 
@@ -106,7 +106,7 @@ export function PsychicShell({
                 <p className="mt-1.5 text-sm text-muted-foreground">{subtitle}</p>
               </div>
               <div className="flex items-center gap-2">
-                <ThemeToggle />
+                <ThemeToggle defaultDark />
                 <div className="flex items-center gap-2 rounded-md border border-border bg-secondary/60 px-3 py-2">
                 <span className={`h-2 w-2 rounded-full ${meta.dot}`} />
                 <span className="text-xs font-semibold text-foreground">
