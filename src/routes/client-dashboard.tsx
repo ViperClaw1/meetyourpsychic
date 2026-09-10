@@ -5,7 +5,10 @@ import { ClientSubnav } from "@/components/client-subnav";
 import { AdvisorCard } from "@/components/advisor-card";
 import { PreMatchQuiz } from "@/components/prematch-quiz";
 import { DiscoveryTrigger } from "@/components/filter-sidebar";
+import { EmptyState } from "@/components/empty-state";
 import { categories, favoriteAdvisors, smartMatches } from "@/data/advisors";
+
+const recentSessions: typeof favoriteAdvisors = [];
 
 
 export const Route = createFileRoute("/client-dashboard")({
