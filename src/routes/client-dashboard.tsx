@@ -46,7 +46,10 @@ function ClientDashboard() {
         title="Welcome back, Alex"
         subtitle="Your credits, rewards, and advisors matched to your profile."
       >
+        <ClientSubnav />
+
         {/* Wallets */}
+
         <section className="grid gap-5 lg:grid-cols-2">
           <div className="rounded-lg border border-border bg-primary p-6 shadow-lift">
             <div className="flex items-start justify-between">
