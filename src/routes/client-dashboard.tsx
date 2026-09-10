@@ -1,43 +1,152 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DashboardShell, Card, Panel, Row } from "@/components/dashboard-shell";
+import { Gift, Plus, Sparkles, Wallet } from "lucide-react";
+import { DashboardShell } from "@/components/dashboard-shell";
+import { AdvisorCard } from "@/components/advisor-card";
+import { PreMatchQuiz } from "@/components/prematch-quiz";
+import { DiscoveryTrigger } from "@/components/filter-sidebar";
+import { categories, favoriteAdvisors, smartMatches } from "@/data/advisors";
 
 export const Route = createFileRoute("/client-dashboard")({
   head: () => ({
     meta: [
       { title: "Client dashboard — MeetYourPsychic" },
-      { name: "description", content: "Your readings, balance, and saved advisors." },
+      {
+        name: "description",
+        content: "Your Clarity Credits, rewards points, favourite advisors, and smart matches.",
+      },
       { property: "og:title", content: "Client dashboard — MeetYourPsychic" },
-      { property: "og:description", content: "Your readings, balance, and saved advisors." },
+      {
+        property: "og:description",
+        content: "Your Clarity Credits, rewards points, favourite advisors, and smart matches.",
+      },
     ],
   }),
   component: ClientDashboard,
 });
 
+const categoryMeta: Record<string, string> = {
+  Tarot: "312 advisors",
+  "Love & Relationships": "480 advisors",
+  Career: "265 advisors",
+  Astrology: "198 advisors",
+  "Dream Analysis": "87 advisors",
+  Mediumship: "142 advisors",
+  Numerology: "64 advisors",
+  "Spiritual Healing": "121 advisors",
+};
+
 function ClientDashboard() {
   return (
-    <DashboardShell
-      role="client"
-      title="Welcome back, Alex"
-      subtitle="Pick up where you left off or connect with a new advisor."
-    >
-      <div className="grid gap-5 sm:grid-cols-3">
-        <Card label="Balance" value="$42.50" hint="≈ 8 minutes with Selene" />
-        <Card label="Readings" value="17" hint="3 this month" />
-        <Card label="Saved advisors" value="5" hint="2 online now" />
-      </div>
+    <>
+      <PreMatchQuiz />
+      <DashboardShell
+        role="client"
+        title="Welcome back, Alex"
+        subtitle="Your credits, rewards, and advisors matched to your profile."
+      >
+        {/* Wallets */}
+        <section className="grid gap-5 lg:grid-cols-2">
+          <div className="rounded-lg border border-border bg-primary p-6 shadow-lift">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground/80">
+                  <Wallet className="h-4 w-4" />
+                  Clarity Credits Balance
+                </p>
+                <p className="mt-4 text-4xl font-extrabold tracking-tight text-primary-foreground">
+                  $42.50
+                </p>
+                <p className="mt-2 text-sm text-primary-foreground/80">
+                  ≈ 8 minutes with Selene · Auto top-up off
+                </p>
+              </div>
+              <span className="rounded-md bg-primary-foreground/15 px-2.5 py-1 text-xs font-semibold text-primary-foreground">
+                Wallet
+              </span>
+            </div>
+            <button className="mt-6 inline-flex items-center gap-2 rounded-md bg-card px-4 py-2.5 text-sm font-semibold text-primary shadow-soft transition-opacity hover:opacity-90">
+              <Plus className="h-4 w-4" />
+              Top up credits
+            </button>
+          </div>
 
-      <div className="mt-6 grid gap-5 lg:grid-cols-2">
-        <Panel title="Recent readings">
-          <Row primary="Selene Marlowe" secondary="Tarot · 22 min" meta="Completed" />
-          <Row primary="Idris Vale" secondary="Clairvoyant · 11 min" meta="Completed" />
-          <Row primary="Nadia Okonkwo" secondary="Astrology · 35 min" meta="Refunded" />
-        </Panel>
-        <Panel title="Advisors online">
-          <Row primary="Selene Marlowe" secondary="$4.99/min · ★ 4.9" meta="Online" />
-          <Row primary="Marek Sol" secondary="$5.25/min · ★ 4.7" meta="Busy" />
-          <Row primary="Nadia Okonkwo" secondary="$3.75/min · ★ 5.0" meta="Online" />
-        </Panel>
-      </div>
-    </DashboardShell>
+          <div className="rounded-lg border border-border bg-card p-6 shadow-soft">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                  <Gift className="h-4 w-4" />
+                  MYP Rewards
+                </p>
+                <p className="mt-4 text-4xl font-extrabold tracking-tight text-foreground">
+                  2,480 <span className="text-lg font-bold text-muted-foreground">pts</span>
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  520 points until your next $10 reward
+                </p>
+              </div>
+              <span className="rounded-md bg-primary-soft px-2.5 py-1 text-xs font-semibold text-primary">
+                Gold tier
+              </span>
+            </div>
+            <div className="mt-5 h-2 overflow-hidden rounded-md bg-secondary">
+              <div className="h-full w-[83%] rounded-md bg-primary" />
+            </div>
+            <button className="mt-5 rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
+              Redeem points
+            </button>
+          </div>
+        </section>
+
+        {/* Top categories */}
+        <section className="mt-10">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-lg font-bold text-foreground">Top Categories</h2>
+            <DiscoveryTrigger />
+          </div>
+          <div className="no-scrollbar -mx-1 mt-4 flex gap-3 overflow-x-auto px-1 pb-2">
+            {categories.map((c) => (
+              <button
+                key={c}
+                className="flex min-w-[190px] shrink-0 flex-col rounded-lg border border-border bg-card p-4 text-left shadow-soft transition-colors hover:border-primary"
+              >
+                <span className="h-1 w-8 rounded-md bg-primary" />
+                <span className="mt-3 text-sm font-semibold text-foreground">{c}</span>
+                <span className="mt-1 text-xs text-muted-foreground">{categoryMeta[c]}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Favorites */}
+        <section className="mt-10">
+          <h2 className="text-lg font-bold text-foreground">Favorite Advisors</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Readers you've saved for quick access.</p>
+          <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {favoriteAdvisors.map((a) => (
+              <AdvisorCard key={a.id} advisor={a} />
+            ))}
+          </div>
+        </section>
+
+        {/* Smart matches */}
+        <section className="mt-10">
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-primary" />
+            <h2 className="text-lg font-bold text-foreground">Smart Matches</h2>
+            <span className="rounded-md bg-primary-soft px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-primary">
+              Recombee
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Ranked from your quiz answers and past readings.
+          </p>
+          <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {smartMatches.map((a) => (
+              <AdvisorCard key={a.id} advisor={a} showMatch />
+            ))}
+          </div>
+        </section>
+      </DashboardShell>
+    </>
   );
 }
