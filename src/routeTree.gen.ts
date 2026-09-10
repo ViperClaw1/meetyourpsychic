@@ -21,6 +21,7 @@ import { Route as ReferRouteImport } from './routes/refer'
 import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
 import { Route as ChatIdRouteImport } from './routes/chat.$id'
+import { Route as PsychicAppointmentsRouteImport } from './routes/psychic.appointments'
 import { Route as PsychicEarningsRouteImport } from './routes/psychic.earnings'
 import { Route as PsychicNotesRouteImport } from './routes/psychic.notes'
 import { Route as PsychicProfileRouteImport } from './routes/psychic.profile'
@@ -87,6 +88,11 @@ const ChatIdRoute = ChatIdRouteImport.update({
   path: '/chat/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PsychicAppointmentsRoute = PsychicAppointmentsRouteImport.update({
+  id: '/psychic/appointments',
+  path: '/psychic/appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PsychicEarningsRoute = PsychicEarningsRouteImport.update({
   id: '/psychic/earnings',
   path: '/psychic/earnings',
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
+  '/psychic/appointments': typeof PsychicAppointmentsRoute
   '/psychic/earnings': typeof PsychicEarningsRoute
   '/psychic/notes': typeof PsychicNotesRoute
   '/psychic/profile': typeof PsychicProfileRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
+  '/psychic/appointments': typeof PsychicAppointmentsRoute
   '/psychic/earnings': typeof PsychicEarningsRoute
   '/psychic/notes': typeof PsychicNotesRoute
   '/psychic/profile': typeof PsychicProfileRoute
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
+  '/psychic/appointments': typeof PsychicAppointmentsRoute
   '/psychic/earnings': typeof PsychicEarningsRoute
   '/psychic/notes': typeof PsychicNotesRoute
   '/psychic/profile': typeof PsychicProfileRoute
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
+    | '/psychic/appointments'
     | '/psychic/earnings'
     | '/psychic/notes'
     | '/psychic/profile'
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
+    | '/psychic/appointments'
     | '/psychic/earnings'
     | '/psychic/notes'
     | '/psychic/profile'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
+    | '/psychic/appointments'
     | '/psychic/earnings'
     | '/psychic/notes'
     | '/psychic/profile'
@@ -244,6 +256,7 @@ export interface RootRouteChildren {
   RewardsRoute: typeof RewardsRoute
   AdvisorIdRoute: typeof AdvisorIdRoute
   ChatIdRoute: typeof ChatIdRoute
+  PsychicAppointmentsRoute: typeof PsychicAppointmentsRoute
   PsychicEarningsRoute: typeof PsychicEarningsRoute
   PsychicNotesRoute: typeof PsychicNotesRoute
   PsychicProfileRoute: typeof PsychicProfileRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChatIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/psychic/appointments': {
+      id: '/psychic/appointments'
+      path: '/psychic/appointments'
+      fullPath: '/psychic/appointments'
+      preLoaderRoute: typeof PsychicAppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/psychic/earnings': {
       id: '/psychic/earnings'
       path: '/psychic/earnings'
@@ -388,6 +408,7 @@ const rootRouteChildren: RootRouteChildren = {
   RewardsRoute: RewardsRoute,
   AdvisorIdRoute: AdvisorIdRoute,
   ChatIdRoute: ChatIdRoute,
+  PsychicAppointmentsRoute: PsychicAppointmentsRoute,
   PsychicEarningsRoute: PsychicEarningsRoute,
   PsychicNotesRoute: PsychicNotesRoute,
   PsychicProfileRoute: PsychicProfileRoute,

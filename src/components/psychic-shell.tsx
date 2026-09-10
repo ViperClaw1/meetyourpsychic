@@ -10,11 +10,13 @@ import {
   CalendarDays,
   Wallet,
   NotebookPen,
+  CalendarClock,
 } from "lucide-react";
 
 const NAV = [
   { to: "/psychic-dashboard", label: "Overview", icon: LayoutGrid },
   { to: "/psychic/queue", label: "Queue", icon: Users },
+  { to: "/psychic/appointments", label: "Appointments", icon: CalendarClock },
   { to: "/psychic/profile", label: "Profile", icon: UserCircle2 },
   { to: "/psychic/schedule", label: "Schedule", icon: CalendarDays },
   { to: "/psychic/earnings", label: "Earnings", icon: Wallet },
