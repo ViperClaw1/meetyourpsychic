@@ -50,10 +50,17 @@ export function AdvisorCard({
         compact ? "w-[280px] shrink-0" : ""
       }`}
     >
+      <Link
+        to="/advisor/$id"
+        params={{ id: advisor.id }}
+        aria-label={`View ${advisor.name}'s profile`}
+        className="absolute inset-0 z-0 rounded-lg"
+      />
       {/* Header row */}
-      <div className="flex items-center justify-between gap-2">
+      <div className="relative z-10 flex items-center justify-between gap-2">
         {advisor.badge ? <AdvisorBadge tag={advisor.badge} /> : <span />}
         <div className="flex items-center gap-1">
+
           {showMatch && advisor.matchScore ? (
             <span className="mr-1 rounded-md bg-primary-soft px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em] text-primary">
               {advisor.matchScore}% match
@@ -148,7 +155,7 @@ export function AdvisorCard({
       </div>
 
       {/* Actions */}
-      <div className="mt-3 grid grid-cols-3 gap-1.5">
+      <div className="relative z-10 mt-3 grid grid-cols-3 gap-1.5">
         <Link
           to="/advisor/$id"
           params={{ id: advisor.id }}
