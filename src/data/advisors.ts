@@ -14,11 +14,18 @@ export type Review = {
   text: string;
 };
 
+export type AdvisorStatus = "AVAILABLE" | "OFFLINE" | "ON A BREAK";
+
 export type Advisor = {
   id: string;
   name: string;
   photo: string;
   headline: string;
+  tagline?: string;
+  readings?: number;
+  since?: number;
+  listPrice?: number;
+  status?: AdvisorStatus;
   category: string;
   skills: string[];
   online: boolean;
@@ -36,6 +43,7 @@ export type Advisor = {
   schedule?: { day: string; hours: string; available: boolean }[];
   reviewList?: Review[];
 };
+
 
 const defaultSchedule = [
   { day: "Monday", hours: "9:00 AM – 6:00 PM", available: true },
