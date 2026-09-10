@@ -9,6 +9,7 @@ import {
   Receipt,
   ShieldAlert,
   FileText,
+  LifeBuoy,
   Download,
   Search,
 } from "lucide-react";
@@ -20,6 +21,7 @@ const NAV = [
   { to: "/admin/transactions", label: "Transactions", icon: Receipt },
   { to: "/admin/moderation", label: "Moderation", icon: ShieldAlert },
   { to: "/admin/content", label: "Content", icon: FileText },
+  { to: "/admin/support", label: "Support", icon: LifeBuoy },
 ] as const;
 
 export function AdminShell({

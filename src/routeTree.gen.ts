@@ -22,6 +22,7 @@ import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as AdminContentRouteImport } from './routes/admin.content'
 import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
 import { Route as AdminPsychicsRouteImport } from './routes/admin.psychics'
+import { Route as AdminSupportRouteImport } from './routes/admin.support'
 import { Route as AdminTransactionsRouteImport } from './routes/admin.transactions'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
@@ -98,6 +99,11 @@ const AdminPsychicsRoute = AdminPsychicsRouteImport.update({
   path: '/admin/psychics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSupportRoute = AdminSupportRouteImport.update({
+  id: '/admin/support',
+  path: '/admin/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminTransactionsRoute = AdminTransactionsRouteImport.update({
   id: '/admin/transactions',
   path: '/admin/transactions',
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/admin/content': typeof AdminContentRoute
   '/admin/moderation': typeof AdminModerationRoute
   '/admin/psychics': typeof AdminPsychicsRoute
+  '/admin/support': typeof AdminSupportRoute
   '/admin/transactions': typeof AdminTransactionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/advisor/$id': typeof AdvisorIdRoute
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/admin/content': typeof AdminContentRoute
   '/admin/moderation': typeof AdminModerationRoute
   '/admin/psychics': typeof AdminPsychicsRoute
+  '/admin/support': typeof AdminSupportRoute
   '/admin/transactions': typeof AdminTransactionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/advisor/$id': typeof AdvisorIdRoute
@@ -214,6 +222,7 @@ export interface FileRoutesById {
   '/admin/content': typeof AdminContentRoute
   '/admin/moderation': typeof AdminModerationRoute
   '/admin/psychics': typeof AdminPsychicsRoute
+  '/admin/support': typeof AdminSupportRoute
   '/admin/transactions': typeof AdminTransactionsRoute
   '/admin/users': typeof AdminUsersRoute
   '/advisor/$id': typeof AdvisorIdRoute
@@ -241,6 +250,7 @@ export interface FileRouteTypes {
     | '/admin/content'
     | '/admin/moderation'
     | '/admin/psychics'
+    | '/admin/support'
     | '/admin/transactions'
     | '/admin/users'
     | '/advisor/$id'
@@ -266,6 +276,7 @@ export interface FileRouteTypes {
     | '/admin/content'
     | '/admin/moderation'
     | '/admin/psychics'
+    | '/admin/support'
     | '/admin/transactions'
     | '/admin/users'
     | '/advisor/$id'
@@ -291,6 +302,7 @@ export interface FileRouteTypes {
     | '/admin/content'
     | '/admin/moderation'
     | '/admin/psychics'
+    | '/admin/support'
     | '/admin/transactions'
     | '/admin/users'
     | '/advisor/$id'
@@ -317,6 +329,7 @@ export interface RootRouteChildren {
   AdminContentRoute: typeof AdminContentRoute
   AdminModerationRoute: typeof AdminModerationRoute
   AdminPsychicsRoute: typeof AdminPsychicsRoute
+  AdminSupportRoute: typeof AdminSupportRoute
   AdminTransactionsRoute: typeof AdminTransactionsRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdvisorIdRoute: typeof AdvisorIdRoute
@@ -422,6 +435,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPsychicsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/support': {
+      id: '/admin/support'
+      path: '/admin/support'
+      fullPath: '/admin/support'
+      preLoaderRoute: typeof AdminSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/transactions': {
       id: '/admin/transactions'
       path: '/admin/transactions'
@@ -509,6 +529,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminContentRoute: AdminContentRoute,
   AdminModerationRoute: AdminModerationRoute,
   AdminPsychicsRoute: AdminPsychicsRoute,
+  AdminSupportRoute: AdminSupportRoute,
   AdminTransactionsRoute: AdminTransactionsRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdvisorIdRoute: AdvisorIdRoute,

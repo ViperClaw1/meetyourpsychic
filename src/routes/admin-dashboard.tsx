@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AdminShell, DataPanel, Th, Td, Pill } from "@/components/admin-shell";
+import { SupportWidget } from "@/components/support-widget";
 
 export const Route = createFileRoute("/admin-dashboard")({
   head: () => ({
@@ -89,6 +90,10 @@ function AdminDashboard() {
             </tbody>
           </table>
         </DataPanel>
+      </div>
+
+      <div className="mt-5">
+        <SupportWidget compact />
       </div>
     </AdminShell>
   );
