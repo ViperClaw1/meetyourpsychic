@@ -53,6 +53,8 @@ const transactions: Txn[] = [
   { id: "TX-10429", date: "Sep 8, 2026", type: "Session charge", detail: "Chat · Selene Marlowe · 14 min", amount: -69.86, status: "Completed" },
   { id: "TX-10421", date: "Sep 6, 2026", type: "Partial refund", detail: "Dropped call credit · Idris Vale", amount: 12.5, status: "Completed" },
   { id: "TX-10418", date: "Sep 3, 2026", type: "Unused credit return", detail: "Booking cancelled · deposit released", amount: 30, status: "Completed" },
+  { id: "TX-10410", date: "Sep 1, 2026", type: "Inactivity fee", detail: "No reading in 180 days · $4.99 monthly maintenance", amount: -4.99, status: "Completed" },
+  { id: "TX-10386", date: "Aug 1, 2026", type: "Inactivity fee", detail: "No reading in 180 days · waived after top-up", amount: -4.99, status: "Reversed" },
   { id: "TX-10402", date: "Aug 29, 2026", type: "Top-up", detail: "Mastercard •••• 8210 · NMI auth 87740", amount: 100, status: "Completed" },
   { id: "TX-10395", date: "Aug 27, 2026", type: "Session charge", detail: "Call · Nadia Okonkwo · 22 min", amount: -82.5, status: "Reversed" },
 ];
