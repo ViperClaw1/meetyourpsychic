@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
+import { Route as ClientDashboardRouteImport } from './routes/client-dashboard'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PsychicDashboardRouteImport } from './routes/psychic-dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin-dashboard',
+  path: '/admin-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientDashboardRoute = ClientDashboardRouteImport.update({
+  id: '/client-dashboard',
+  path: '/client-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsychicDashboardRoute = PsychicDashboardRouteImport.update({
+  id: '/psychic-dashboard',
+  path: '/psychic-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin-dashboard': typeof AdminDashboardRoute
+  '/client-dashboard': typeof ClientDashboardRoute
+  '/login': typeof LoginRoute
+  '/psychic-dashboard': typeof PsychicDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin-dashboard': typeof AdminDashboardRoute
+  '/client-dashboard': typeof ClientDashboardRoute
+  '/login': typeof LoginRoute
+  '/psychic-dashboard': typeof PsychicDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin-dashboard': typeof AdminDashboardRoute
+  '/client-dashboard': typeof ClientDashboardRoute
+  '/login': typeof LoginRoute
+  '/psychic-dashboard': typeof PsychicDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin-dashboard'
+    | '/client-dashboard'
+    | '/login'
+    | '/psychic-dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin-dashboard'
+    | '/client-dashboard'
+    | '/login'
+    | '/psychic-dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin-dashboard'
+    | '/client-dashboard'
+    | '/login'
+    | '/psychic-dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  ClientDashboardRoute: typeof ClientDashboardRoute
+  LoginRoute: typeof LoginRoute
+  PsychicDashboardRoute: typeof PsychicDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin-dashboard': {
+      id: '/admin-dashboard'
+      path: '/admin-dashboard'
+      fullPath: '/admin-dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client-dashboard': {
+      id: '/client-dashboard'
+      path: '/client-dashboard'
+      fullPath: '/client-dashboard'
+      preLoaderRoute: typeof ClientDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psychic-dashboard': {
+      id: '/psychic-dashboard'
+      path: '/psychic-dashboard'
+      fullPath: '/psychic-dashboard'
+      preLoaderRoute: typeof PsychicDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  ClientDashboardRoute: ClientDashboardRoute,
+  LoginRoute: LoginRoute,
+  PsychicDashboardRoute: PsychicDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

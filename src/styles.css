@@ -26,7 +26,10 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
   --color-background: var(--background);
+
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -69,8 +72,11 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.47 0.19 295);
+  --primary-hover: oklch(0.42 0.19 295);
+  --primary-soft: oklch(0.965 0.02 296);
+  --primary-foreground: oklch(0.995 0 0);
+
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
@@ -132,6 +138,12 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: 0 1px 2px oklch(0.2 0.05 290 / 0.06), 0 8px 24px oklch(0.2 0.05 290 / 0.07);
+  --shadow-lift: 0 2px 4px oklch(0.2 0.05 290 / 0.06), 0 18px 40px oklch(0.2 0.05 290 / 0.12);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -140,5 +152,29 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+
+@keyframes scanline {
+  0% {
+    top: 8%;
+    opacity: 0.2;
+  }
+  50% {
+    top: 88%;
+    opacity: 1;
+  }
+  100% {
+    top: 8%;
+    opacity: 0.2;
   }
 }
