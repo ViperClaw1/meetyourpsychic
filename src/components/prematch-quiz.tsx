@@ -276,20 +276,33 @@ function ChoiceStep({
     <div>
       <h2 className="text-xl font-bold text-foreground">{title}</h2>
       <p className="mt-1.5 text-sm text-muted-foreground">{subtitle}</p>
-      <div className="mt-6 grid gap-2.5 sm:grid-cols-3">
+      <div className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-3">
         {options.map((o) => {
           const active = selected.includes(o);
+          const Icon = optionIcons[o] ?? Sparkles;
           return (
             <button
               key={o}
               onClick={() => onToggle(o)}
-              className={`rounded-md border px-3.5 py-3 text-left text-sm font-medium transition-colors ${
+              className={`group relative flex aspect-square flex-col items-center justify-center gap-2.5 rounded-xl border p-3 text-center text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 ${
                 active
-                  ? "border-primary bg-primary-soft text-primary"
-                  : "border-border text-foreground hover:border-primary/50 hover:bg-secondary"
+                  ? "border-primary bg-primary-soft text-primary shadow-lift"
+                  : "border-border bg-card text-foreground shadow-soft hover:border-primary/50 hover:shadow-lift"
               }`}
             >
-              {o}
+              {active && (
+                <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-primary">
+                  <Check className="h-3 w-3 text-primary-foreground" />
+                </span>
+              )}
+              <span
+                className={`grid h-12 w-12 place-items-center rounded-full transition-colors ${
+                  active ? "bg-primary text-primary-foreground" : "bg-primary-soft text-primary"
+                }`}
+              >
+                <Icon className="h-6 w-6" />
+              </span>
+              <span className="leading-tight">{o}</span>
             </button>
           );
         })}
