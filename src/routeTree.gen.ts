@@ -21,6 +21,7 @@ import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as ReferRouteImport } from './routes/refer'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RewardsRouteImport } from './routes/rewards'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AdminContentRouteImport } from './routes/admin.content'
 import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
 import { Route as AdminPsychicsRouteImport } from './routes/admin.psychics'
@@ -94,6 +95,11 @@ const RegisterRoute = RegisterRouteImport.update({
 const RewardsRoute = RewardsRouteImport.update({
   id: '/rewards',
   path: '/rewards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminContentRoute = AdminContentRouteImport.update({
@@ -180,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/refer': typeof ReferRoute
   '/register': typeof RegisterRoute
   '/rewards': typeof RewardsRoute
+  '/settings': typeof SettingsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/moderation': typeof AdminModerationRoute
   '/admin/psychics': typeof AdminPsychicsRoute
@@ -208,6 +215,7 @@ export interface FileRoutesByTo {
   '/refer': typeof ReferRoute
   '/register': typeof RegisterRoute
   '/rewards': typeof RewardsRoute
+  '/settings': typeof SettingsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/moderation': typeof AdminModerationRoute
   '/admin/psychics': typeof AdminPsychicsRoute
@@ -237,6 +245,7 @@ export interface FileRoutesById {
   '/refer': typeof ReferRoute
   '/register': typeof RegisterRoute
   '/rewards': typeof RewardsRoute
+  '/settings': typeof SettingsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/moderation': typeof AdminModerationRoute
   '/admin/psychics': typeof AdminPsychicsRoute
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/refer'
     | '/register'
     | '/rewards'
+    | '/settings'
     | '/admin/content'
     | '/admin/moderation'
     | '/admin/psychics'
@@ -295,6 +305,7 @@ export interface FileRouteTypes {
     | '/refer'
     | '/register'
     | '/rewards'
+    | '/settings'
     | '/admin/content'
     | '/admin/moderation'
     | '/admin/psychics'
@@ -323,6 +334,7 @@ export interface FileRouteTypes {
     | '/refer'
     | '/register'
     | '/rewards'
+    | '/settings'
     | '/admin/content'
     | '/admin/moderation'
     | '/admin/psychics'
@@ -352,6 +364,7 @@ export interface RootRouteChildren {
   ReferRoute: typeof ReferRoute
   RegisterRoute: typeof RegisterRoute
   RewardsRoute: typeof RewardsRoute
+  SettingsRoute: typeof SettingsRoute
   AdminContentRoute: typeof AdminContentRoute
   AdminModerationRoute: typeof AdminModerationRoute
   AdminPsychicsRoute: typeof AdminPsychicsRoute
@@ -452,6 +465,13 @@ declare module '@tanstack/react-router' {
       path: '/rewards'
       fullPath: '/rewards'
       preLoaderRoute: typeof RewardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/content': {
@@ -568,6 +588,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReferRoute: ReferRoute,
   RegisterRoute: RegisterRoute,
   RewardsRoute: RewardsRoute,
+  SettingsRoute: SettingsRoute,
   AdminContentRoute: AdminContentRoute,
   AdminModerationRoute: AdminModerationRoute,
   AdminPsychicsRoute: AdminPsychicsRoute,

@@ -1,10 +1,81 @@
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { ChevronDown, CreditCard, Gift, LogOut, Settings, Sparkles } from "lucide-react";
 import { useAuth, roleHome, roleLabel } from "@/lib/auth";
 import { DiscoveryTrigger } from "@/components/filter-sidebar";
 
+function AccountMenu() {
+  const { role, signOut } = useAuth();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
+
+  const item =
+    "flex w-full items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-primary-soft";
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="inline-flex items-center gap-1.5 rounded-md border border-border px-3.5 py-2 text-sm font-medium text-foreground shadow-soft transition-colors hover:bg-secondary"
+      >
+        Account
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      {open ? (
+        <div className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-card py-1.5 shadow-lg">
+          <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/settings" }); }}>
+            <Settings className="h-4 w-4 text-muted-foreground" />
+            Profile settings
+          </button>
+          {role === "client" ? (
+            <>
+              <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/billing" }); }}>
+                <CreditCard className="h-4 w-4 text-muted-foreground" />
+                Billing
+              </button>
+              <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/rewards" }); }}>
+                <Gift className="h-4 w-4 text-muted-foreground" />
+                Rewards
+              </button>
+              <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/horoscopes" }); }}>
+                <Sparkles className="h-4 w-4 text-muted-foreground" />
+                Horoscopes
+              </button>
+            </>
+          ) : null}
+          <div className="my-1.5 h-px bg-border" />
+          <button
+            type="button"
+            className="flex w-full items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-destructive transition-colors hover:bg-destructive/10"
+            onClick={() => {
+              setOpen(false);
+              signOut();
+              navigate({ to: "/login" });
+            }}
+          >
+            <LogOut className="h-4 w-4" />
+            Sign out
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 export function SiteNav() {
-  const { role, signOut } = useAuth();
+  const { role } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -23,20 +94,6 @@ export function SiteNav() {
           <Link to="/" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Home
           </Link>
-          <DiscoveryTrigger className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground" />
-          {role === "client" ? (
-            <>
-              <Link to="/billing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Billing
-              </Link>
-              <Link to="/rewards" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Rewards
-              </Link>
-              <Link to="/horoscopes" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Horoscopes
-              </Link>
-            </>
-          ) : null}
           {role === "psychic" ? (
             <>
               <Link to="/psychic/queue" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
@@ -64,21 +121,12 @@ export function SiteNav() {
           {role ? (
             <>
               <button
-
                 onClick={() => navigate({ to: roleHome[role] })}
                 className="rounded-md border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
               >
                 {roleLabel[role]} dashboard
               </button>
-              <button
-                onClick={() => {
-                  signOut();
-                  navigate({ to: "/login" });
-                }}
-                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Sign out
-              </button>
+              <AccountMenu />
             </>
           ) : (
             <>
