@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AdminShell, DataPanel, Th, Td, Pill } from "@/components/admin-shell";
 import { SupportWidget } from "@/components/support-widget";
+import { AnalyticsOverview } from "@/components/admin-analytics";
 
 export const Route = createFileRoute("/admin-dashboard")({
   head: () => ({
