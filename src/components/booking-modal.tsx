@@ -122,9 +122,15 @@ export function BookingModal({
 
           {/* Slots */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Available times
-            </p>
+            <div className="flex items-baseline justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Available times
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Globe className="h-3.5 w-3.5 text-primary" />
+                {timeZone}
+              </span>
+            </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {slots.map((s) => {
                 const off = unavailable.has(s);
