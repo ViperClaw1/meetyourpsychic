@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
+import { OtpModal } from "@/components/otp-modal";
 import { useAuth, roleHome, type Role } from "@/lib/auth";
 
 export const Route = createFileRoute("/login")({
@@ -32,6 +33,7 @@ const devButtons: { role: Role; label: string; hint: string }[] = [
 function LoginPage() {
   const [mode, setMode] = useState<"login" | "register">("login");
   const [scan, setScan] = useState<Scan>("idle");
+  const [otpOpen, setOtpOpen] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
@@ -44,6 +46,12 @@ function LoginPage() {
   const devLogin = (role: Role) => {
     signIn(role);
     navigate({ to: roleHome[role] });
+  };
+
+  const finishLogin = () => {
+    setOtpOpen(false);
+    signIn("client");
+    navigate({ to: roleHome.client });
   };
 
   return (
@@ -78,7 +86,13 @@ function LoginPage() {
               : "It takes under a minute. First 3 minutes free."}
           </p>
 
-          <form className="mt-7 space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <form
+            className="mt-7 space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              setOtpOpen(true);
+            }}
+          >
             {mode === "register" && (
               <Field label="Full name" type="text" placeholder="Alex Rivera" />
             )}
@@ -102,8 +116,8 @@ function LoginPage() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <OAuthButton provider="Google" />
-            <OAuthButton provider="Apple" />
+            <OAuthButton provider="Google" onClick={() => setOtpOpen(true)} />
+            <OAuthButton provider="Apple" onClick={() => setOtpOpen(true)} />
           </div>
 
           <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
@@ -186,6 +200,8 @@ function LoginPage() {
           </p>
         </div>
       </main>
+
+      <OtpModal open={otpOpen} onClose={() => setOtpOpen(false)} onVerified={finishLogin} />
     </div>
   );
 }
@@ -211,10 +227,17 @@ function Field({
   );
 }
 
-function OAuthButton({ provider }: { provider: "Google" | "Apple" }) {
+function OAuthButton({
+  provider,
+  onClick,
+}: {
+  provider: "Google" | "Apple";
+  onClick: () => void;
+}) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className="flex items-center justify-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground shadow-soft transition-colors hover:bg-secondary"
     >
       <span aria-hidden className="text-base leading-none">
