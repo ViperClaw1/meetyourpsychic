@@ -42,6 +42,12 @@ export function AdminShell({
     if (ready && role !== "admin") navigate({ to: "/login" });
   }, [ready, role, navigate]);
 
+  // Admin panel is always light mode.
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+  }, []);
+
+
   return (
     <div className="flex min-h-screen flex-col bg-secondary/40">
       <SiteNav />
