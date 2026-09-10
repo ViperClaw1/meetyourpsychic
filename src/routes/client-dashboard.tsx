@@ -137,11 +137,38 @@ function ClientDashboard() {
         <section className="mt-10">
           <h2 className="text-lg font-bold text-foreground">Favorite Advisors</h2>
           <p className="mt-1 text-sm text-muted-foreground">Readers you've saved for quick access.</p>
-          <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {favoriteAdvisors.map((a) => (
-              <AdvisorCard key={a.id} advisor={a} />
-            ))}
-          </div>
+          {favoriteAdvisors.length > 0 ? (
+            <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {favoriteAdvisors.map((a) => (
+                <AdvisorCard key={a.id} advisor={a} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-4">
+              <EmptyState />
+            </div>
+          )}
+        </section>
+
+        {/* Recent sessions */}
+        <section className="mt-10">
+          <h2 className="text-lg font-bold text-foreground">Recent Sessions</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Your latest calls and chats with advisors.</p>
+          {recentSessions.length > 0 ? (
+            <div className="mt-4 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {recentSessions.map((a) => (
+                <AdvisorCard key={a.id} advisor={a} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-4">
+              <EmptyState
+                title="You haven't connected with any advisors yet!"
+                message="Your recent calls and chats will appear here once you start a reading."
+                ctaLabel="Explore advisors"
+              />
+            </div>
+          )}
         </section>
 
         {/* Smart matches */}
