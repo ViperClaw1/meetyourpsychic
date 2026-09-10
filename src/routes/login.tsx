@@ -86,7 +86,13 @@ function LoginPage() {
               : "It takes under a minute. First 3 minutes free."}
           </p>
 
-          <form className="mt-7 space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <form
+            className="mt-7 space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              setOtpOpen(true);
+            }}
+          >
             {mode === "register" && (
               <Field label="Full name" type="text" placeholder="Alex Rivera" />
             )}
