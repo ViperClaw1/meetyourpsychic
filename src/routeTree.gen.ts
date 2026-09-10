@@ -17,6 +17,7 @@ import { Route as HoroscopesRouteImport } from './routes/horoscopes'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PromosRouteImport } from './routes/promos'
 import { Route as PsychicDashboardRouteImport } from './routes/psychic-dashboard'
+import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as ReferRouteImport } from './routes/refer'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RewardsRouteImport } from './routes/rewards'
@@ -73,6 +74,11 @@ const PromosRoute = PromosRouteImport.update({
 const PsychicDashboardRoute = PsychicDashboardRouteImport.update({
   id: '/psychic-dashboard',
   path: '/psychic-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReferRoute = ReferRouteImport.update({
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/promos': typeof PromosRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/quiz': typeof QuizRoute
   '/refer': typeof ReferRoute
   '/register': typeof RegisterRoute
   '/rewards': typeof RewardsRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/promos': typeof PromosRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/quiz': typeof QuizRoute
   '/refer': typeof ReferRoute
   '/register': typeof RegisterRoute
   '/rewards': typeof RewardsRoute
@@ -225,6 +233,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/promos': typeof PromosRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/quiz': typeof QuizRoute
   '/refer': typeof ReferRoute
   '/register': typeof RegisterRoute
   '/rewards': typeof RewardsRoute
@@ -254,6 +263,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/promos'
     | '/psychic-dashboard'
+    | '/quiz'
     | '/refer'
     | '/register'
     | '/rewards'
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/promos'
     | '/psychic-dashboard'
+    | '/quiz'
     | '/refer'
     | '/register'
     | '/rewards'
@@ -308,6 +319,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/promos'
     | '/psychic-dashboard'
+    | '/quiz'
     | '/refer'
     | '/register'
     | '/rewards'
@@ -336,6 +348,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PromosRoute: typeof PromosRoute
   PsychicDashboardRoute: typeof PsychicDashboardRoute
+  QuizRoute: typeof QuizRoute
   ReferRoute: typeof ReferRoute
   RegisterRoute: typeof RegisterRoute
   RewardsRoute: typeof RewardsRoute
@@ -411,6 +424,13 @@ declare module '@tanstack/react-router' {
       path: '/psychic-dashboard'
       fullPath: '/psychic-dashboard'
       preLoaderRoute: typeof PsychicDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/refer': {
@@ -544,6 +564,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PromosRoute: PromosRoute,
   PsychicDashboardRoute: PsychicDashboardRoute,
+  QuizRoute: QuizRoute,
   ReferRoute: ReferRoute,
   RegisterRoute: RegisterRoute,
   RewardsRoute: RewardsRoute,
