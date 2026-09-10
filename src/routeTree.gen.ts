@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
+import { Route as BillingRouteImport } from './routes/billing'
 import { Route as ClientDashboardRouteImport } from './routes/client-dashboard'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PsychicDashboardRouteImport } from './routes/psychic-dashboard'
+import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
 import { Route as ChatIdRouteImport } from './routes/chat.$id'
 
@@ -25,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin-dashboard',
   path: '/admin-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BillingRoute = BillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClientDashboardRoute = ClientDashboardRouteImport.update({
@@ -42,6 +49,11 @@ const PsychicDashboardRoute = PsychicDashboardRouteImport.update({
   path: '/psychic-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RewardsRoute = RewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdvisorIdRoute = AdvisorIdRouteImport.update({
   id: '/advisor/$id',
   path: '/advisor/$id',
@@ -56,18 +68,22 @@ const ChatIdRoute = ChatIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin-dashboard': typeof AdminDashboardRoute
+  '/billing': typeof BillingRoute
   '/client-dashboard': typeof ClientDashboardRoute
   '/login': typeof LoginRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin-dashboard': typeof AdminDashboardRoute
+  '/billing': typeof BillingRoute
   '/client-dashboard': typeof ClientDashboardRoute
   '/login': typeof LoginRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
 }
@@ -75,9 +91,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin-dashboard': typeof AdminDashboardRoute
+  '/billing': typeof BillingRoute
   '/client-dashboard': typeof ClientDashboardRoute
   '/login': typeof LoginRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
 }
@@ -86,27 +104,33 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin-dashboard'
+    | '/billing'
     | '/client-dashboard'
     | '/login'
     | '/psychic-dashboard'
+    | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin-dashboard'
+    | '/billing'
     | '/client-dashboard'
     | '/login'
     | '/psychic-dashboard'
+    | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
   id:
     | '__root__'
     | '/'
     | '/admin-dashboard'
+    | '/billing'
     | '/client-dashboard'
     | '/login'
     | '/psychic-dashboard'
+    | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
   fileRoutesById: FileRoutesById
@@ -114,9 +138,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  BillingRoute: typeof BillingRoute
   ClientDashboardRoute: typeof ClientDashboardRoute
   LoginRoute: typeof LoginRoute
   PsychicDashboardRoute: typeof PsychicDashboardRoute
+  RewardsRoute: typeof RewardsRoute
   AdvisorIdRoute: typeof AdvisorIdRoute
   ChatIdRoute: typeof ChatIdRoute
 }
@@ -135,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/admin-dashboard'
       fullPath: '/admin-dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/billing': {
+      id: '/billing'
+      path: '/billing'
+      fullPath: '/billing'
+      preLoaderRoute: typeof BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/client-dashboard': {
@@ -158,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PsychicDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rewards': {
+      id: '/rewards'
+      path: '/rewards'
+      fullPath: '/rewards'
+      preLoaderRoute: typeof RewardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/advisor/$id': {
       id: '/advisor/$id'
       path: '/advisor/$id'
@@ -178,9 +218,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  BillingRoute: BillingRoute,
   ClientDashboardRoute: ClientDashboardRoute,
   LoginRoute: LoginRoute,
   PsychicDashboardRoute: PsychicDashboardRoute,
+  RewardsRoute: RewardsRoute,
   AdvisorIdRoute: AdvisorIdRoute,
   ChatIdRoute: ChatIdRoute,
 }
