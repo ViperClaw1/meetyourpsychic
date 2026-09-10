@@ -58,6 +58,20 @@ export function IvrCallModal({
             className="h-20 w-20 rounded-lg border border-border object-cover"
           />
           <p className="mt-4 text-base font-bold text-foreground">{advisor.name}</p>
+          {!ended ? (
+            <div className="mt-3 flex h-8 items-end justify-center gap-[3px]">
+              {[0.55, 0.8, 1, 0.7, 1, 0.45, 0.9, 0.65, 1, 0.5, 0.85, 0.6].map((h, i) => (
+                <span
+                  key={i}
+                  className={`w-[3px] rounded-full ${lowBalance ? "bg-destructive" : "bg-primary"}`}
+                  style={{
+                    height: `${h * 100}%`,
+                    animation: `myp-wave ${0.9 + (i % 4) * 0.18}s ease-in-out ${i * 0.07}s infinite`,
+                  }}
+                />
+              ))}
+            </div>
+          ) : null}
           <p className="text-sm text-muted-foreground">
             {ended ? "Call ended" : "Voice session in progress"}
           </p>
@@ -89,7 +103,7 @@ export function IvrCallModal({
             <div className="mb-5 rounded-md border border-destructive/30 bg-destructive/8 p-4">
               <p className="flex items-center gap-2 text-sm font-semibold text-destructive">
                 <AlertTriangle className="h-4 w-4" />
-                Low balance — {fmt(remaining)} remaining
+                Low Balance: Top Up 10 Mins or End Call
               </p>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                 Your Clarity Credits are running out. Top up now to keep the session going, or the
