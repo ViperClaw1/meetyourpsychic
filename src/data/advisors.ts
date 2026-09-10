@@ -129,6 +129,8 @@ export const advisors: Advisor[] = [
     category: "Astrology",
     skills: ["Astrology", "Numerology"],
     online: true,
+    busy: true,
+
     rating: 5,
     reviews: 876,
     pricePerMin: 3.75,
@@ -152,6 +154,20 @@ export const advisors: Advisor[] = [
     matchScore: 84,
   },
 ];
+
+for (const a of advisors) {
+  a.languages ??= ["English", "Spanish"];
+  a.experienceYears ??= 8 + (a.reviews % 11);
+  a.audioBioSeconds ??= 38 + (a.reviews % 25);
+  a.schedule ??= defaultSchedule;
+  a.reviewList ??= sampleReviews(a.name);
+  a.bio ??= `${a.name} has spent ${a.experienceYears} years reading for people at turning points — ${a.headline.toLowerCase()}. Sessions are grounded and practical: expect clear timing, honest answers, and a next step you can actually take. Every reading starts with a short check-in so the guidance lands on what you actually came for, whether that is ${a.skills.join(" or ").toLowerCase()}.`;
+}
+
+export function getAdvisor(id: string): Advisor | undefined {
+  return advisors.find((a) => a.id === id);
+}
+
 
 export const favoriteAdvisors: Advisor[] = advisors.filter((a) => ["a1", "a3"].includes(a.id));
 export const smartMatches: Advisor[] = advisors;
