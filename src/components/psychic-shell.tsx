@@ -106,7 +106,7 @@ export function PsychicShell({
                 <p className="mt-1.5 text-sm text-muted-foreground">{subtitle}</p>
               </div>
               <div className="flex items-center gap-2">
-                <ThemeToggle />
+                <ThemeToggle defaultDark />
                 <div className="flex items-center gap-2 rounded-md border border-border bg-secondary/60 px-3 py-2">
                 <span className={`h-2 w-2 rounded-full ${meta.dot}`} />
                 <span className="text-xs font-semibold text-foreground">
