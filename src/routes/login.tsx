@@ -116,8 +116,8 @@ function LoginPage() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <OAuthButton provider="Google" />
-            <OAuthButton provider="Apple" />
+            <OAuthButton provider="Google" onClick={() => setOtpOpen(true)} />
+            <OAuthButton provider="Apple" onClick={() => setOtpOpen(true)} />
           </div>
 
           <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
