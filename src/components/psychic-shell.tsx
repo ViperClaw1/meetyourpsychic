@@ -113,6 +113,7 @@ export function PsychicShell({
                   {meta.label}
                   {status === "break" && remaining > 0 ? ` · ${fmt(remaining)}` : ""}
                 </span>
+                </div>
               </div>
             </div>
 
