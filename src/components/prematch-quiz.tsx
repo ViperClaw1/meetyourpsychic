@@ -64,6 +64,7 @@ export function PreMatchQuiz({
   const [synced, setSynced] = useState(false);
 
   useEffect(() => {
+    if (alwaysOpen) return;
     if (!window.localStorage.getItem(STORAGE_KEY)) setVisible(true);
     const open = () => {
       setStep(0);
@@ -71,7 +72,7 @@ export function PreMatchQuiz({
     };
     window.addEventListener("myp:open-quiz", open);
     return () => window.removeEventListener("myp:open-quiz", open);
-  }, []);
+  }, [alwaysOpen]);
 
 
   useEffect(() => {
