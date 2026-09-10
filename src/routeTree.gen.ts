@@ -21,6 +21,11 @@ import { Route as ReferRouteImport } from './routes/refer'
 import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
 import { Route as ChatIdRouteImport } from './routes/chat.$id'
+import { Route as PsychicEarningsRouteImport } from './routes/psychic.earnings'
+import { Route as PsychicNotesRouteImport } from './routes/psychic.notes'
+import { Route as PsychicProfileRouteImport } from './routes/psychic.profile'
+import { Route as PsychicQueueRouteImport } from './routes/psychic.queue'
+import { Route as PsychicScheduleRouteImport } from './routes/psychic.schedule'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -82,6 +87,31 @@ const ChatIdRoute = ChatIdRouteImport.update({
   path: '/chat/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PsychicEarningsRoute = PsychicEarningsRouteImport.update({
+  id: '/psychic/earnings',
+  path: '/psychic/earnings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsychicNotesRoute = PsychicNotesRouteImport.update({
+  id: '/psychic/notes',
+  path: '/psychic/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsychicProfileRoute = PsychicProfileRouteImport.update({
+  id: '/psychic/profile',
+  path: '/psychic/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsychicQueueRoute = PsychicQueueRouteImport.update({
+  id: '/psychic/queue',
+  path: '/psychic/queue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsychicScheduleRoute = PsychicScheduleRouteImport.update({
+  id: '/psychic/schedule',
+  path: '/psychic/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +126,11 @@ export interface FileRoutesByFullPath {
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
+  '/psychic/earnings': typeof PsychicEarningsRoute
+  '/psychic/notes': typeof PsychicNotesRoute
+  '/psychic/profile': typeof PsychicProfileRoute
+  '/psychic/queue': typeof PsychicQueueRoute
+  '/psychic/schedule': typeof PsychicScheduleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +145,11 @@ export interface FileRoutesByTo {
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
+  '/psychic/earnings': typeof PsychicEarningsRoute
+  '/psychic/notes': typeof PsychicNotesRoute
+  '/psychic/profile': typeof PsychicProfileRoute
+  '/psychic/queue': typeof PsychicQueueRoute
+  '/psychic/schedule': typeof PsychicScheduleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +165,11 @@ export interface FileRoutesById {
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
+  '/psychic/earnings': typeof PsychicEarningsRoute
+  '/psychic/notes': typeof PsychicNotesRoute
+  '/psychic/profile': typeof PsychicProfileRoute
+  '/psychic/queue': typeof PsychicQueueRoute
+  '/psychic/schedule': typeof PsychicScheduleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +186,11 @@ export interface FileRouteTypes {
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
+    | '/psychic/earnings'
+    | '/psychic/notes'
+    | '/psychic/profile'
+    | '/psychic/queue'
+    | '/psychic/schedule'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +205,11 @@ export interface FileRouteTypes {
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
+    | '/psychic/earnings'
+    | '/psychic/notes'
+    | '/psychic/profile'
+    | '/psychic/queue'
+    | '/psychic/schedule'
   id:
     | '__root__'
     | '/'
@@ -169,6 +224,11 @@ export interface FileRouteTypes {
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
+    | '/psychic/earnings'
+    | '/psychic/notes'
+    | '/psychic/profile'
+    | '/psychic/queue'
+    | '/psychic/schedule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +244,11 @@ export interface RootRouteChildren {
   RewardsRoute: typeof RewardsRoute
   AdvisorIdRoute: typeof AdvisorIdRoute
   ChatIdRoute: typeof ChatIdRoute
+  PsychicEarningsRoute: typeof PsychicEarningsRoute
+  PsychicNotesRoute: typeof PsychicNotesRoute
+  PsychicProfileRoute: typeof PsychicProfileRoute
+  PsychicQueueRoute: typeof PsychicQueueRoute
+  PsychicScheduleRoute: typeof PsychicScheduleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -272,6 +337,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChatIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/psychic/earnings': {
+      id: '/psychic/earnings'
+      path: '/psychic/earnings'
+      fullPath: '/psychic/earnings'
+      preLoaderRoute: typeof PsychicEarningsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psychic/notes': {
+      id: '/psychic/notes'
+      path: '/psychic/notes'
+      fullPath: '/psychic/notes'
+      preLoaderRoute: typeof PsychicNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psychic/profile': {
+      id: '/psychic/profile'
+      path: '/psychic/profile'
+      fullPath: '/psychic/profile'
+      preLoaderRoute: typeof PsychicProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psychic/queue': {
+      id: '/psychic/queue'
+      path: '/psychic/queue'
+      fullPath: '/psychic/queue'
+      preLoaderRoute: typeof PsychicQueueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psychic/schedule': {
+      id: '/psychic/schedule'
+      path: '/psychic/schedule'
+      fullPath: '/psychic/schedule'
+      preLoaderRoute: typeof PsychicScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -288,6 +388,11 @@ const rootRouteChildren: RootRouteChildren = {
   RewardsRoute: RewardsRoute,
   AdvisorIdRoute: AdvisorIdRoute,
   ChatIdRoute: ChatIdRoute,
+  PsychicEarningsRoute: PsychicEarningsRoute,
+  PsychicNotesRoute: PsychicNotesRoute,
+  PsychicProfileRoute: PsychicProfileRoute,
+  PsychicQueueRoute: PsychicQueueRoute,
+  PsychicScheduleRoute: PsychicScheduleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
