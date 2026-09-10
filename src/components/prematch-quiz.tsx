@@ -95,6 +95,10 @@ export function PreMatchQuiz({
 
   const finish = () => {
     window.localStorage.setItem(STORAGE_KEY, "1");
+    if (onFinish) {
+      onFinish();
+      return;
+    }
     setVisible(false);
   };
 
