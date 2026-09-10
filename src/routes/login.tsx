@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
+import { OtpModal } from "@/components/otp-modal";
 import { useAuth, roleHome, type Role } from "@/lib/auth";
 
 export const Route = createFileRoute("/login")({
