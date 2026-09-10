@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Info } from "lucide-react";
+import { ChevronLeft, ChevronRight, Globe, Info } from "lucide-react";
 import { Modal } from "@/components/modal";
 import type { Advisor } from "@/data/advisors";
 
@@ -8,6 +8,14 @@ const unavailable = new Set(["12:00 PM", "6:30 PM"]);
 const monthLabel = "September 2026";
 const firstWeekdayOffset = 1; // month starts Tuesday
 const daysInMonth = 30;
+
+function detectTimeZone() {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch {
+    return "UTC";
+  }
+}
 
 export function BookingModal({
   advisor,
@@ -22,6 +30,7 @@ export function BookingModal({
   const [slot, setSlot] = useState<string | null>(null);
   const [duration, setDuration] = useState(30);
   const [confirmed, setConfirmed] = useState(false);
+  const [timeZone] = useState(detectTimeZone);
 
   const deposit = (advisor.pricePerMin * duration).toFixed(2);
 
@@ -71,7 +80,7 @@ export function BookingModal({
       {confirmed ? (
         <div className="space-y-3">
           <SummaryRow label="Advisor" value={advisor.name} />
-          <SummaryRow label="When" value={`Sep ${day}, 2026 · ${slot}`} />
+          <SummaryRow label="When" value={`Sep ${day}, 2026 · ${slot} (${timeZone})`} />
           <SummaryRow label="Length" value={`${duration} minutes`} />
           <SummaryRow label="Deposit hold" value={`$${deposit}`} />
         </div>
@@ -122,9 +131,15 @@ export function BookingModal({
 
           {/* Slots */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Available times
-            </p>
+            <div className="flex items-baseline justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Available times
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Globe className="h-3.5 w-3.5 text-primary" />
+                {timeZone}
+              </span>
+            </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {slots.map((s) => {
                 const off = unavailable.has(s);
