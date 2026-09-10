@@ -35,24 +35,24 @@ function AccountMenu() {
 
       {open ? (
         <div className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-card py-1.5 shadow-lg">
-          <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/settings" }); }}>
+          <Link to="/settings" className={item} onClick={() => setOpen(false)}>
             <Settings className="h-4 w-4 text-muted-foreground" />
             Profile settings
-          </button>
+          </Link>
           {role === "client" ? (
             <>
-              <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/billing" }); }}>
+              <Link to="/billing" className={item} onClick={() => setOpen(false)}>
                 <CreditCard className="h-4 w-4 text-muted-foreground" />
                 Billing
-              </button>
-              <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/rewards" }); }}>
+              </Link>
+              <Link to="/rewards" className={item} onClick={() => setOpen(false)}>
                 <Gift className="h-4 w-4 text-muted-foreground" />
                 Rewards
-              </button>
-              <button type="button" className={item} onClick={() => { setOpen(false); navigate({ to: "/horoscopes" }); }}>
+              </Link>
+              <Link to="/horoscopes" className={item} onClick={() => setOpen(false)}>
                 <Sparkles className="h-4 w-4 text-muted-foreground" />
                 Horoscopes
-              </button>
+              </Link>
             </>
           ) : null}
           <div className="my-1.5 h-px bg-border" />
@@ -76,7 +76,7 @@ function AccountMenu() {
 
 export function SiteNav() {
   const { role } = useAuth();
-  const navigate = useNavigate();
+
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
@@ -120,12 +120,12 @@ export function SiteNav() {
           <DiscoveryTrigger className="hidden items-center gap-2 rounded-md border border-border bg-card px-3.5 py-2 text-sm font-medium text-muted-foreground shadow-soft transition-colors hover:border-primary hover:text-foreground sm:inline-flex" />
           {role ? (
             <>
-              <button
-                onClick={() => navigate({ to: roleHome[role] })}
+              <Link
+                to={roleHome[role]}
                 className="rounded-md border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
               >
                 {roleLabel[role]} dashboard
-              </button>
+              </Link>
               <AccountMenu />
             </>
           ) : (

@@ -206,3 +206,9 @@
   0%, 100% { transform: scaleY(0.3); opacity: 0.55; }
   50% { transform: scaleY(1); opacity: 1; }
 }
+
+@keyframes route-progress {
+  0% { transform: scaleX(0); }
+  60% { transform: scaleX(0.8); }
+  100% { transform: scaleX(1); }
+}
