@@ -62,6 +62,7 @@ const typeStyles: Record<Txn["type"], string> = {
   "Session charge": "bg-secondary text-secondary-foreground border-border",
   "Partial refund": "bg-badge-rising-soft text-badge-rising border-badge-rising/25",
   "Unused credit return": "bg-badge-new-soft text-badge-new border-badge-new/25",
+  "Inactivity fee": "bg-destructive/10 text-destructive border-destructive/25",
 };
 
 function BillingPage() {
