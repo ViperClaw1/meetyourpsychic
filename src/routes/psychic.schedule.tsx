@@ -53,7 +53,7 @@ function ScheduleManager() {
                   </span>
                 ))}
                 {HOURS.map((h) => (
-                  <>
+                  <Fragment key={h}>
                     <span key={`l${h}`} className="pr-2 text-right text-[11px] leading-7 text-muted-foreground">
                       {label(h)}
                     </span>
