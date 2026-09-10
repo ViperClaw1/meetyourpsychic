@@ -76,7 +76,7 @@ function AccountMenu() {
 
 export function SiteNav() {
   const { role } = useAuth();
-  const navigate = useNavigate();
+
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
