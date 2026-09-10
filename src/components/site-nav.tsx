@@ -23,7 +23,7 @@ export function SiteNav() {
           <Link to="/" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Home
           </Link>
-          <DiscoveryTrigger className="text-sm text-muted-foreground transition-colors hover:text-foreground" />
+          <DiscoveryTrigger className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground" />
           {role === "client" ? (
             <>
               <Link to="/billing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
