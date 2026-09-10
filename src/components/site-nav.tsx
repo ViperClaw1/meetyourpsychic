@@ -19,13 +19,44 @@ export function SiteNav() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           <Link to="/" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Home
           </Link>
-          <span className="text-sm text-muted-foreground">Advisors</span>
-          <span className="text-sm text-muted-foreground">How it works</span>
-          <span className="text-sm text-muted-foreground">Pricing</span>
+          <DiscoveryTrigger className="text-sm text-muted-foreground transition-colors hover:text-foreground" />
+          {role === "client" ? (
+            <>
+              <Link to="/billing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Billing
+              </Link>
+              <Link to="/rewards" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Rewards
+              </Link>
+              <Link to="/horoscopes" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Horoscopes
+              </Link>
+            </>
+          ) : null}
+          {role === "psychic" ? (
+            <>
+              <Link to="/psychic/queue" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Queue
+              </Link>
+              <Link to="/psychic/earnings" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Earnings
+              </Link>
+            </>
+          ) : null}
+          {role === "admin" ? (
+            <>
+              <Link to="/admin/transactions" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Transactions
+              </Link>
+              <Link to="/admin/support" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                Support
+              </Link>
+            </>
+          ) : null}
         </nav>
 
         <div className="flex items-center gap-3">
