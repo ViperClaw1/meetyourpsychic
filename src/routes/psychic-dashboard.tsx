@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DashboardShell, Card, Panel, Row } from "@/components/dashboard-shell";
+import { Card, Panel, Row } from "@/components/dashboard-shell";
+import { PsychicShell } from "@/components/psychic-shell";
 
 export const Route = createFileRoute("/psychic-dashboard")({
   head: () => ({
@@ -15,8 +16,7 @@ export const Route = createFileRoute("/psychic-dashboard")({
 
 function PsychicDashboard() {
   return (
-    <DashboardShell
-      role="psychic"
+    <PsychicShell
       title="Good evening, Selene"
       subtitle="You are visible to clients and 3 people are waiting."
     >
@@ -38,6 +38,6 @@ function PsychicDashboard() {
           <Row primary="Friday, 6:00 PM" secondary="Open availability block" meta="4 hrs" />
         </Panel>
       </div>
-    </DashboardShell>
+    </PsychicShell>
   );
 }
