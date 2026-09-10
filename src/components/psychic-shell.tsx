@@ -3,6 +3,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { Modal } from "@/components/modal";
 import { useAuth } from "@/lib/auth";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   LayoutGrid,
   Users,
@@ -104,7 +105,9 @@ export function PsychicShell({
                 <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{title}</h1>
                 <p className="mt-1.5 text-sm text-muted-foreground">{subtitle}</p>
               </div>
-              <div className="flex items-center gap-2 rounded-md border border-border bg-secondary/60 px-3 py-2">
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <div className="flex items-center gap-2 rounded-md border border-border bg-secondary/60 px-3 py-2">
                 <span className={`h-2 w-2 rounded-full ${meta.dot}`} />
                 <span className="text-xs font-semibold text-foreground">
                   {meta.label}
