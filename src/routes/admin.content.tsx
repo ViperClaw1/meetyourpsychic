@@ -11,7 +11,7 @@ export const Route = createFileRoute("/admin/content")({
       { property: "og:description", content: "Manage categories, horoscope copy, promos, and site pages." },
     ],
   }),
-  component: Content;
+  component: Content,
 });
 
 const PAGES = [
