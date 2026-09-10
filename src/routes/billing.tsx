@@ -42,7 +42,7 @@ const initialCards: SavedCard[] = [
 type Txn = {
   id: string;
   date: string;
-  type: "Top-up" | "Session charge" | "Partial refund" | "Unused credit return";
+  type: "Top-up" | "Session charge" | "Partial refund" | "Unused credit return" | "Inactivity fee";
   detail: string;
   amount: number;
   status: "Completed" | "Processing" | "Reversed";
