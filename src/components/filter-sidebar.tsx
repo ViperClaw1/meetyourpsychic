@@ -46,10 +46,24 @@ export function DiscoveryProvider({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Safe fallback so components (nav, cards, error screens) never crash when they
+ * render outside the provider (e.g. during HMR module duplication). Opening
+ * discovery still works through the global window event.
+ */
+const fallbackDiscovery: DiscoveryValue = {
+  open: false,
+  setOpen: (v: boolean) => {
+    if (v && typeof window !== "undefined") {
+      window.dispatchEvent(new Event("myp:open-discovery"));
+    }
+  },
+  filters: defaultFilters,
+  setFilters: () => {},
+};
+
 export function useDiscovery() {
-  const ctx = useContext(DiscoveryContext);
-  if (!ctx) throw new Error("useDiscovery must be used inside DiscoveryProvider");
-  return ctx;
+  return useContext(DiscoveryContext) ?? fallbackDiscovery;
 }
 
 export function DiscoveryTrigger({ className }: { className?: string }) {
