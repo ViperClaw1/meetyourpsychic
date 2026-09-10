@@ -132,7 +132,7 @@ function HoroscopesPage() {
             </button>
           </div>
           <p key={nonce} className="mt-4 text-base leading-relaxed text-foreground">
-            {view === "daily" ? daily.default : weekly}
+            {view === "daily" ? daily["default"] : weekly}
           </p>
           <p className="mt-6 rounded-md border border-border bg-secondary/50 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
             Generated for {current.name} using your quiz answers and recent reading history.
