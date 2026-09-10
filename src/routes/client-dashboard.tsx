@@ -1,10 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Gift, Plus, Sparkles, Wallet } from "lucide-react";
 import { DashboardShell } from "@/components/dashboard-shell";
+import { ClientSubnav } from "@/components/client-subnav";
 import { AdvisorCard } from "@/components/advisor-card";
 import { PreMatchQuiz } from "@/components/prematch-quiz";
 import { DiscoveryTrigger } from "@/components/filter-sidebar";
 import { categories, favoriteAdvisors, smartMatches } from "@/data/advisors";
+
 
 export const Route = createFileRoute("/client-dashboard")({
   head: () => ({
@@ -64,10 +66,14 @@ function ClientDashboard() {
                 Wallet
               </span>
             </div>
-            <button className="mt-6 inline-flex items-center gap-2 rounded-md bg-card px-4 py-2.5 text-sm font-semibold text-primary shadow-soft transition-opacity hover:opacity-90">
+            <Link
+              to="/billing"
+              className="mt-6 inline-flex items-center gap-2 rounded-md bg-card px-4 py-2.5 text-sm font-semibold text-primary shadow-soft transition-opacity hover:opacity-90"
+            >
               <Plus className="h-4 w-4" />
               Top up credits
-            </button>
+            </Link>
+
           </div>
 
           <div className="rounded-lg border border-border bg-card p-6 shadow-soft">
@@ -91,9 +97,13 @@ function ClientDashboard() {
             <div className="mt-5 h-2 overflow-hidden rounded-md bg-secondary">
               <div className="h-full w-[83%] rounded-md bg-primary" />
             </div>
-            <button className="mt-5 rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
+            <Link
+              to="/rewards"
+              className="mt-5 inline-block rounded-md border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+            >
               Redeem points
-            </button>
+            </Link>
+
           </div>
         </section>
 

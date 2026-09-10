@@ -13,8 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
 import { Route as BillingRouteImport } from './routes/billing'
 import { Route as ClientDashboardRouteImport } from './routes/client-dashboard'
+import { Route as HoroscopesRouteImport } from './routes/horoscopes'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PromosRouteImport } from './routes/promos'
 import { Route as PsychicDashboardRouteImport } from './routes/psychic-dashboard'
+import { Route as ReferRouteImport } from './routes/refer'
 import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
 import { Route as ChatIdRouteImport } from './routes/chat.$id'
@@ -39,14 +42,29 @@ const ClientDashboardRoute = ClientDashboardRouteImport.update({
   path: '/client-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HoroscopesRoute = HoroscopesRouteImport.update({
+  id: '/horoscopes',
+  path: '/horoscopes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromosRoute = PromosRouteImport.update({
+  id: '/promos',
+  path: '/promos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PsychicDashboardRoute = PsychicDashboardRouteImport.update({
   id: '/psychic-dashboard',
   path: '/psychic-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferRoute = ReferRouteImport.update({
+  id: '/refer',
+  path: '/refer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RewardsRoute = RewardsRouteImport.update({
@@ -70,8 +88,11 @@ export interface FileRoutesByFullPath {
   '/admin-dashboard': typeof AdminDashboardRoute
   '/billing': typeof BillingRoute
   '/client-dashboard': typeof ClientDashboardRoute
+  '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
+  '/promos': typeof PromosRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/refer': typeof ReferRoute
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
@@ -81,8 +102,11 @@ export interface FileRoutesByTo {
   '/admin-dashboard': typeof AdminDashboardRoute
   '/billing': typeof BillingRoute
   '/client-dashboard': typeof ClientDashboardRoute
+  '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
+  '/promos': typeof PromosRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/refer': typeof ReferRoute
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
@@ -93,8 +117,11 @@ export interface FileRoutesById {
   '/admin-dashboard': typeof AdminDashboardRoute
   '/billing': typeof BillingRoute
   '/client-dashboard': typeof ClientDashboardRoute
+  '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
+  '/promos': typeof PromosRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/refer': typeof ReferRoute
   '/rewards': typeof RewardsRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
@@ -106,8 +133,11 @@ export interface FileRouteTypes {
     | '/admin-dashboard'
     | '/billing'
     | '/client-dashboard'
+    | '/horoscopes'
     | '/login'
+    | '/promos'
     | '/psychic-dashboard'
+    | '/refer'
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
@@ -117,8 +147,11 @@ export interface FileRouteTypes {
     | '/admin-dashboard'
     | '/billing'
     | '/client-dashboard'
+    | '/horoscopes'
     | '/login'
+    | '/promos'
     | '/psychic-dashboard'
+    | '/refer'
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
@@ -128,8 +161,11 @@ export interface FileRouteTypes {
     | '/admin-dashboard'
     | '/billing'
     | '/client-dashboard'
+    | '/horoscopes'
     | '/login'
+    | '/promos'
     | '/psychic-dashboard'
+    | '/refer'
     | '/rewards'
     | '/advisor/$id'
     | '/chat/$id'
@@ -140,8 +176,11 @@ export interface RootRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   BillingRoute: typeof BillingRoute
   ClientDashboardRoute: typeof ClientDashboardRoute
+  HoroscopesRoute: typeof HoroscopesRoute
   LoginRoute: typeof LoginRoute
+  PromosRoute: typeof PromosRoute
   PsychicDashboardRoute: typeof PsychicDashboardRoute
+  ReferRoute: typeof ReferRoute
   RewardsRoute: typeof RewardsRoute
   AdvisorIdRoute: typeof AdvisorIdRoute
   ChatIdRoute: typeof ChatIdRoute
@@ -177,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/horoscopes': {
+      id: '/horoscopes'
+      path: '/horoscopes'
+      fullPath: '/horoscopes'
+      preLoaderRoute: typeof HoroscopesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -184,11 +230,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/promos': {
+      id: '/promos'
+      path: '/promos'
+      fullPath: '/promos'
+      preLoaderRoute: typeof PromosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/psychic-dashboard': {
       id: '/psychic-dashboard'
       path: '/psychic-dashboard'
       fullPath: '/psychic-dashboard'
       preLoaderRoute: typeof PsychicDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refer': {
+      id: '/refer'
+      path: '/refer'
+      fullPath: '/refer'
+      preLoaderRoute: typeof ReferRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rewards': {
@@ -220,8 +280,11 @@ const rootRouteChildren: RootRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   BillingRoute: BillingRoute,
   ClientDashboardRoute: ClientDashboardRoute,
+  HoroscopesRoute: HoroscopesRoute,
   LoginRoute: LoginRoute,
+  PromosRoute: PromosRoute,
   PsychicDashboardRoute: PsychicDashboardRoute,
+  ReferRoute: ReferRoute,
   RewardsRoute: RewardsRoute,
   AdvisorIdRoute: AdvisorIdRoute,
   ChatIdRoute: ChatIdRoute,
