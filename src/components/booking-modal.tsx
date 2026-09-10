@@ -30,6 +30,7 @@ export function BookingModal({
   const [slot, setSlot] = useState<string | null>(null);
   const [duration, setDuration] = useState(30);
   const [confirmed, setConfirmed] = useState(false);
+  const [timeZone] = useState(detectTimeZone);
 
   const deposit = (advisor.pricePerMin * duration).toFixed(2);
 
