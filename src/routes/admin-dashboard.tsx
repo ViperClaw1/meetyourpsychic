@@ -32,7 +32,9 @@ const FLAGS = [
 function AdminDashboard() {
   return (
     <AdminShell title="Marketplace overview" subtitle="Platform health, vetting pipeline, and payout controls.">
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <AnalyticsOverview />
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="GMV (30d)" value="$412K" hint="+9.4% vs prior 30d" />
         <Metric label="Active advisors" value="1,240" hint="86 pending review" />
         <Metric label="Active clients" value="38,902" hint="+1,204 this week" />
