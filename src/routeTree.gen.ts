@@ -14,6 +14,7 @@ import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
 import { Route as ClientDashboardRouteImport } from './routes/client-dashboard'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PsychicDashboardRouteImport } from './routes/psychic-dashboard'
+import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
 import { Route as ChatIdRouteImport } from './routes/chat.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const PsychicDashboardRoute = PsychicDashboardRouteImport.update({
   path: '/psychic-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdvisorIdRoute = AdvisorIdRouteImport.update({
+  id: '/advisor/$id',
+  path: '/advisor/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ChatIdRoute = ChatIdRouteImport.update({
   id: '/chat/$id',
   path: '/chat/$id',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/client-dashboard': typeof ClientDashboardRoute
   '/login': typeof LoginRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/client-dashboard': typeof ClientDashboardRoute
   '/login': typeof LoginRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/client-dashboard': typeof ClientDashboardRoute
   '/login': typeof LoginRoute
   '/psychic-dashboard': typeof PsychicDashboardRoute
+  '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/client-dashboard'
     | '/login'
     | '/psychic-dashboard'
+    | '/advisor/$id'
     | '/chat/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/client-dashboard'
     | '/login'
     | '/psychic-dashboard'
+    | '/advisor/$id'
     | '/chat/$id'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/client-dashboard'
     | '/login'
     | '/psychic-dashboard'
+    | '/advisor/$id'
     | '/chat/$id'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   ClientDashboardRoute: typeof ClientDashboardRoute
   LoginRoute: typeof LoginRoute
   PsychicDashboardRoute: typeof PsychicDashboardRoute
+  AdvisorIdRoute: typeof AdvisorIdRoute
   ChatIdRoute: typeof ChatIdRoute
 }
 
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PsychicDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/advisor/$id': {
+      id: '/advisor/$id'
+      path: '/advisor/$id'
+      fullPath: '/advisor/$id'
+      preLoaderRoute: typeof AdvisorIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/chat/$id': {
       id: '/chat/$id'
       path: '/chat/$id'
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClientDashboardRoute: ClientDashboardRoute,
   LoginRoute: LoginRoute,
   PsychicDashboardRoute: PsychicDashboardRoute,
+  AdvisorIdRoute: AdvisorIdRoute,
   ChatIdRoute: ChatIdRoute,
 }
 export const routeTree = rootRouteImport

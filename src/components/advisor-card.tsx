@@ -1,5 +1,7 @@
+import { Link } from "@tanstack/react-router";
 import { MessageSquare, Phone, Star } from "lucide-react";
 import type { Advisor, BadgeTag } from "@/data/advisors";
+
 
 const badgeStyles: Record<BadgeTag, string> = {
   NEW: "bg-badge-new-soft text-badge-new border-badge-new/25",
@@ -64,7 +66,15 @@ export function AdvisorCard({
                 advisor.online ? "bg-online" : "bg-offline"
               }`}
             />
-            <h3 className="truncate text-sm font-semibold text-foreground">{advisor.name}</h3>
+            <h3 className="truncate text-sm font-semibold text-foreground">
+              <Link
+                to="/advisor/$id"
+                params={{ id: advisor.id }}
+                className="transition-colors hover:text-primary"
+              >
+                {advisor.name}
+              </Link>
+            </h3>
           </div>
           <p className="mt-1 truncate text-sm text-muted-foreground">{advisor.headline}</p>
         </div>
@@ -81,26 +91,29 @@ export function AdvisorCard({
           ({advisor.reviews.toLocaleString()} reviews)
         </span>
         <span className="ml-auto text-xs font-medium text-muted-foreground">
-          {advisor.online ? "Online now" : "Offline"}
+          {advisor.busy ? "In a session" : advisor.online ? "Online now" : "Offline"}
         </span>
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-2.5">
-        <button
-          disabled={!advisor.online}
-          className="inline-flex items-center justify-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-50"
+        <Link
+          to="/advisor/$id"
+          params={{ id: advisor.id }}
+          className="inline-flex items-center justify-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
         >
           <Phone className="h-4 w-4" />
           Call
-        </button>
-        <button
-          disabled={!advisor.online}
-          className="inline-flex items-center justify-center gap-1.5 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+        </Link>
+        <Link
+          to="/chat/$id"
+          params={{ id: advisor.id }}
+          className="inline-flex items-center justify-center gap-1.5 rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
         >
           <MessageSquare className="h-4 w-4" />
           Chat
-        </button>
+        </Link>
       </div>
+
     </article>
   );
 }
