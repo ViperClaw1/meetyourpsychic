@@ -6,6 +6,14 @@ import advisor4 from "@/assets/advisor-4.jpg";
 export type BadgeTag = "NEW" | "RISING STAR" | "TOP RATED";
 export type ReadingType = "Chat" | "Call" | "Video";
 
+export type Review = {
+  id: string;
+  author: string;
+  rating: number;
+  date: string;
+  text: string;
+};
+
 export type Advisor = {
   id: string;
   name: string;
@@ -14,13 +22,62 @@ export type Advisor = {
   category: string;
   skills: string[];
   online: boolean;
+  busy?: boolean;
   rating: number;
   reviews: number;
   pricePerMin: number;
   readingTypes: ReadingType[];
   badge?: BadgeTag;
   matchScore?: number;
+  languages?: string[];
+  experienceYears?: number;
+  bio?: string;
+  audioBioSeconds?: number;
+  schedule?: { day: string; hours: string; available: boolean }[];
+  reviewList?: Review[];
 };
+
+const defaultSchedule = [
+  { day: "Monday", hours: "9:00 AM – 6:00 PM", available: true },
+  { day: "Tuesday", hours: "9:00 AM – 6:00 PM", available: true },
+  { day: "Wednesday", hours: "12:00 PM – 9:00 PM", available: true },
+  { day: "Thursday", hours: "9:00 AM – 4:00 PM", available: true },
+  { day: "Friday", hours: "10:00 AM – 8:00 PM", available: true },
+  { day: "Saturday", hours: "By appointment", available: true },
+  { day: "Sunday", hours: "Unavailable", available: false },
+];
+
+const sampleReviews = (name: string): Review[] => [
+  {
+    id: "r1",
+    author: "Amelia R.",
+    rating: 5,
+    date: "3 days ago",
+    text: `${name} was calm, direct and did not sugarcoat anything. The timing they gave me lined up almost exactly with what happened this week.`,
+  },
+  {
+    id: "r2",
+    author: "Jordan K.",
+    rating: 5,
+    date: "1 week ago",
+    text: "Second reading with them and both times I left with a concrete next step rather than vague comfort. Worth every credit.",
+  },
+  {
+    id: "r3",
+    author: "Priya S.",
+    rating: 4,
+    date: "2 weeks ago",
+    text: "Very warm and easy to talk to. I would have liked a little more detail on the career side, but the relationship read was spot on.",
+  },
+  {
+    id: "r4",
+    author: "Tomas L.",
+    rating: 5,
+    date: "1 month ago",
+    text: "Picked up on things I never mentioned. The chat session went fast and I re-read the transcript twice.",
+  },
+];
+
 
 export const categories = [
   "Tarot",
