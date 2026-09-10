@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { advisors, categories, type ReadingType } from "@/data/advisors";
 import { AdvisorCard } from "@/components/advisor-card";
