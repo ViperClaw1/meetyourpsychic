@@ -200,6 +200,8 @@ function LoginPage() {
           </p>
         </div>
       </main>
+
+      <OtpModal open={otpOpen} onClose={() => setOtpOpen(false)} onVerified={finishLogin} />
     </div>
   );
 }
