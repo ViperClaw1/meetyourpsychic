@@ -33,6 +33,7 @@ const devButtons: { role: Role; label: string; hint: string }[] = [
 function LoginPage() {
   const [mode, setMode] = useState<"login" | "register">("login");
   const [scan, setScan] = useState<Scan>("idle");
+  const [otpOpen, setOtpOpen] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
