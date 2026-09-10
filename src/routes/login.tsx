@@ -30,8 +30,8 @@ const devButtons: { role: Role; label: string; hint: string }[] = [
   { role: "admin", label: "Login as Super Admin", hint: "/admin-dashboard" },
 ];
 
-function LoginPage() {
-  const [mode, setMode] = useState<"login" | "register">("login");
+export function LoginPage({ initialMode = "login" }: { initialMode?: "login" | "register" } = {}) {
+  const [mode, setMode] = useState<"login" | "register">(initialMode);
   const [scan, setScan] = useState<Scan>("idle");
   const [otpOpen, setOtpOpen] = useState(false);
   const { signIn } = useAuth();
