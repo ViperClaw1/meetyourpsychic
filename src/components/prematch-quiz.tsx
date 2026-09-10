@@ -50,8 +50,14 @@ const skills = ["Tarot", "Astrology", "Mediumship", "Numerology", "Dream Analysi
 
 const steps = ["Feelings", "Topics", "Skills", "About you", "Syncing"];
 
-export function PreMatchQuiz() {
-  const [visible, setVisible] = useState(false);
+export function PreMatchQuiz({
+  alwaysOpen = false,
+  onFinish,
+}: {
+  alwaysOpen?: boolean;
+  onFinish?: () => void;
+} = {}) {
+  const [visible, setVisible] = useState(alwaysOpen);
   const [step, setStep] = useState(0);
   const [picked, setPicked] = useState<Record<number, string[]>>({ 0: [], 1: [], 2: [] });
   const [profile, setProfile] = useState({ name: "", birthdate: "", pronouns: "" });
