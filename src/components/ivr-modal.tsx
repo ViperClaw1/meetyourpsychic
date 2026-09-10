@@ -103,7 +103,7 @@ export function IvrCallModal({
             <div className="mb-5 rounded-md border border-destructive/30 bg-destructive/8 p-4">
               <p className="flex items-center gap-2 text-sm font-semibold text-destructive">
                 <AlertTriangle className="h-4 w-4" />
-                Low balance — {fmt(remaining)} remaining
+                Low Balance: Top Up 10 Mins or End Call
               </p>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                 Your Clarity Credits are running out. Top up now to keep the session going, or the
