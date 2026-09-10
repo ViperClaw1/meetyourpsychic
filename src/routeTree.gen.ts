@@ -19,6 +19,11 @@ import { Route as PromosRouteImport } from './routes/promos'
 import { Route as PsychicDashboardRouteImport } from './routes/psychic-dashboard'
 import { Route as ReferRouteImport } from './routes/refer'
 import { Route as RewardsRouteImport } from './routes/rewards'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
+import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
+import { Route as AdminPsychicsRouteImport } from './routes/admin.psychics'
+import { Route as AdminTransactionsRouteImport } from './routes/admin.transactions'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdvisorIdRouteImport } from './routes/advisor.$id'
 import { Route as ChatIdRouteImport } from './routes/chat.$id'
 import { Route as PsychicAppointmentsRouteImport } from './routes/psychic.appointments'
@@ -78,6 +83,31 @@ const RewardsRoute = RewardsRouteImport.update({
   path: '/rewards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/admin/content',
+  path: '/admin/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminModerationRoute = AdminModerationRouteImport.update({
+  id: '/admin/moderation',
+  path: '/admin/moderation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPsychicsRoute = AdminPsychicsRouteImport.update({
+  id: '/admin/psychics',
+  path: '/admin/psychics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTransactionsRoute = AdminTransactionsRouteImport.update({
+  id: '/admin/transactions',
+  path: '/admin/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdvisorIdRoute = AdvisorIdRouteImport.update({
   id: '/advisor/$id',
   path: '/advisor/$id',
@@ -130,6 +160,11 @@ export interface FileRoutesByFullPath {
   '/psychic-dashboard': typeof PsychicDashboardRoute
   '/refer': typeof ReferRoute
   '/rewards': typeof RewardsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/moderation': typeof AdminModerationRoute
+  '/admin/psychics': typeof AdminPsychicsRoute
+  '/admin/transactions': typeof AdminTransactionsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
   '/psychic/appointments': typeof PsychicAppointmentsRoute
@@ -150,6 +185,11 @@ export interface FileRoutesByTo {
   '/psychic-dashboard': typeof PsychicDashboardRoute
   '/refer': typeof ReferRoute
   '/rewards': typeof RewardsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/moderation': typeof AdminModerationRoute
+  '/admin/psychics': typeof AdminPsychicsRoute
+  '/admin/transactions': typeof AdminTransactionsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
   '/psychic/appointments': typeof PsychicAppointmentsRoute
@@ -171,6 +211,11 @@ export interface FileRoutesById {
   '/psychic-dashboard': typeof PsychicDashboardRoute
   '/refer': typeof ReferRoute
   '/rewards': typeof RewardsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/moderation': typeof AdminModerationRoute
+  '/admin/psychics': typeof AdminPsychicsRoute
+  '/admin/transactions': typeof AdminTransactionsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/advisor/$id': typeof AdvisorIdRoute
   '/chat/$id': typeof ChatIdRoute
   '/psychic/appointments': typeof PsychicAppointmentsRoute
@@ -193,6 +238,11 @@ export interface FileRouteTypes {
     | '/psychic-dashboard'
     | '/refer'
     | '/rewards'
+    | '/admin/content'
+    | '/admin/moderation'
+    | '/admin/psychics'
+    | '/admin/transactions'
+    | '/admin/users'
     | '/advisor/$id'
     | '/chat/$id'
     | '/psychic/appointments'
@@ -213,6 +263,11 @@ export interface FileRouteTypes {
     | '/psychic-dashboard'
     | '/refer'
     | '/rewards'
+    | '/admin/content'
+    | '/admin/moderation'
+    | '/admin/psychics'
+    | '/admin/transactions'
+    | '/admin/users'
     | '/advisor/$id'
     | '/chat/$id'
     | '/psychic/appointments'
@@ -233,6 +288,11 @@ export interface FileRouteTypes {
     | '/psychic-dashboard'
     | '/refer'
     | '/rewards'
+    | '/admin/content'
+    | '/admin/moderation'
+    | '/admin/psychics'
+    | '/admin/transactions'
+    | '/admin/users'
     | '/advisor/$id'
     | '/chat/$id'
     | '/psychic/appointments'
@@ -254,6 +314,11 @@ export interface RootRouteChildren {
   PsychicDashboardRoute: typeof PsychicDashboardRoute
   ReferRoute: typeof ReferRoute
   RewardsRoute: typeof RewardsRoute
+  AdminContentRoute: typeof AdminContentRoute
+  AdminModerationRoute: typeof AdminModerationRoute
+  AdminPsychicsRoute: typeof AdminPsychicsRoute
+  AdminTransactionsRoute: typeof AdminTransactionsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
   AdvisorIdRoute: typeof AdvisorIdRoute
   ChatIdRoute: typeof ChatIdRoute
   PsychicAppointmentsRoute: typeof PsychicAppointmentsRoute
@@ -336,6 +401,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RewardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/admin/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/moderation': {
+      id: '/admin/moderation'
+      path: '/admin/moderation'
+      fullPath: '/admin/moderation'
+      preLoaderRoute: typeof AdminModerationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/psychics': {
+      id: '/admin/psychics'
+      path: '/admin/psychics'
+      fullPath: '/admin/psychics'
+      preLoaderRoute: typeof AdminPsychicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/transactions': {
+      id: '/admin/transactions'
+      path: '/admin/transactions'
+      fullPath: '/admin/transactions'
+      preLoaderRoute: typeof AdminTransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/advisor/$id': {
       id: '/advisor/$id'
       path: '/advisor/$id'
@@ -406,6 +506,11 @@ const rootRouteChildren: RootRouteChildren = {
   PsychicDashboardRoute: PsychicDashboardRoute,
   ReferRoute: ReferRoute,
   RewardsRoute: RewardsRoute,
+  AdminContentRoute: AdminContentRoute,
+  AdminModerationRoute: AdminModerationRoute,
+  AdminPsychicsRoute: AdminPsychicsRoute,
+  AdminTransactionsRoute: AdminTransactionsRoute,
+  AdminUsersRoute: AdminUsersRoute,
   AdvisorIdRoute: AdvisorIdRoute,
   ChatIdRoute: ChatIdRoute,
   PsychicAppointmentsRoute: PsychicAppointmentsRoute,
