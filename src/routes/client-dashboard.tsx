@@ -34,7 +34,7 @@ function ClientDashboard() {
         </Panel>
         <Panel title="Advisors online">
           <Row primary="Selene Marlowe" secondary="$4.99/min · ★ 4.9" meta="Online" />
-          <Row primary="Marek Sول" secondary="$5.25/min · ★ 4.7" meta="Busy" />
+          <Row primary="Marek Sol" secondary="$5.25/min · ★ 4.7" meta="Busy" />
           <Row primary="Nadia Okonkwo" secondary="$3.75/min · ★ 5.0" meta="Online" />
         </Panel>
       </div>

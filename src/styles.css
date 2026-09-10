@@ -163,3 +163,18 @@
   }
 }
 
+
+@keyframes scanline {
+  0% {
+    top: 8%;
+    opacity: 0.2;
+  }
+  50% {
+    top: 88%;
+    opacity: 1;
+  }
+  100% {
+    top: 8%;
+    opacity: 0.2;
+  }
+}
