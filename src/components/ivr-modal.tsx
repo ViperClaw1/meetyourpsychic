@@ -61,11 +61,25 @@ export function IvrCallModal({
           <p className="text-sm text-muted-foreground">
             {ended ? "Call ended" : "Voice session in progress"}
           </p>
-          <p className="mt-4 font-mono text-4xl font-bold tabular-nums text-foreground">
+          <p
+            className={`mt-4 font-mono text-4xl font-bold tabular-nums ${
+              lowBalance
+                ? "text-destructive animate-pulse"
+                : "text-foreground"
+            }`}
+          >
             {fmt(elapsed)}
           </p>
           <div className="mt-2 flex items-center gap-4 text-xs font-medium text-muted-foreground">
-            <span>Balance time left: {fmt(remaining)}</span>
+            <span
+              className={
+                lowBalance
+                  ? "font-bold text-destructive animate-pulse"
+                  : "font-medium text-muted-foreground"
+              }
+            >
+              Balance time left: {fmt(remaining)}
+            </span>
             <span>Charged: ${cost.toFixed(2)}</span>
           </div>
         </div>
