@@ -18,7 +18,14 @@ export function PreMatchQuiz() {
 
   useEffect(() => {
     if (!window.localStorage.getItem(STORAGE_KEY)) setVisible(true);
+    const open = () => {
+      setStep(0);
+      setVisible(true);
+    };
+    window.addEventListener("myp:open-quiz", open);
+    return () => window.removeEventListener("myp:open-quiz", open);
   }, []);
+
 
   useEffect(() => {
     if (step !== 4) return;
