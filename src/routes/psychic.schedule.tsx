@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PsychicShell, PsychicPanel } from "@/components/psychic-shell";
 
@@ -74,7 +74,7 @@ function ScheduleManager() {
                         />
                       );
                     })}
-                  </>
+                  </Fragment>
                 ))}
               </div>
             </div>
