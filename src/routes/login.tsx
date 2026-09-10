@@ -48,6 +48,12 @@ function LoginPage() {
     navigate({ to: roleHome[role] });
   };
 
+  const finishLogin = () => {
+    setOtpOpen(false);
+    signIn("client");
+    navigate({ to: roleHome.client });
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-secondary/40">
       <SiteNav />
