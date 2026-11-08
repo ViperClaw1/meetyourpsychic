@@ -24,17 +24,13 @@ Mock Auth Routing State: On the Login page, build 3 distinct "Dev Override" butt
 
 Wire the routing so that clicking one of those mock buttons sets a global auth state and redirects to /client-dashboard, /psychic-dashboard, or /admin-dashboard respectively.
 
-This project was built with [Lovable](https://lovable.dev).
+## Workflow
 
-**Live app**: https://meetyourpsychic.lovable.app
+This project can be developed either in its AI-assisted web editor or locally.
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/8b902285-df54-4ecb-a85f-1d40026f14ad).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Ship faster**: describe what you want to build and the editor generates the code.
+- **Stay in sync**: every change made in the editor is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into the editor, ready for your next prompt.
 
 ## Development
 
